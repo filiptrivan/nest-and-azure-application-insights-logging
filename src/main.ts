@@ -5,11 +5,11 @@ import * as winston from 'winston';
 import { OpenTelemetryTransportV3 } from '@opentelemetry/winston-transport';
 import { useAzureMonitor } from '@azure/monitor-opentelemetry';
 
-useAzureMonitor({
-  azureMonitorExporterOptions: {
-    connectionString: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING
-  }
-});
+// useAzureMonitor({
+//   azureMonitorExporterOptions: {
+//     connectionString: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING
+//   }
+// });
 
 async function bootstrap() {
   const winstonLogger = winston.createLogger({
@@ -33,7 +33,9 @@ async function bootstrap() {
     }),
   });
 
-  await app.listen(3000);
+  app.enableCors();
+
+  await app.listen(4000);
 }
 
 bootstrap();

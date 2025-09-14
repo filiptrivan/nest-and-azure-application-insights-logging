@@ -9,4 +9,12 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('notes')
+  notes() {
+    return [
+      { id: 1, text: "Note 1" },
+      { id: 2, text: "Note 2" },
+    ];
+  }
 }
